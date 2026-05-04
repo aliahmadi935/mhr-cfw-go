@@ -28,36 +28,30 @@ The network only sees allowed domains like `www.google.com` while your actual tr
 
 ---
 
-## How to Use
+## Quick Start
 
-### 1 - Download and Build
+### 1 - Clone and Build
 
 ```bash
 git clone https://github.com/ThisIsDara/mhr-cfw-go.git
 cd mhr-cfw-go
-go build -o mhr-cfw-go.exe ./cmd/mhr-cfw
 ```
 
-### 2 - Set Up Google Apps Script Relay
+Or download the latest release from [GitHub Releases](https://github.com/ThisIsDara/mhr-cfw-go/releases)
 
-1. Open [Google Apps Script](https://script.google.com/) and sign in.
-2. Click **New project**.
-3. Open the [`Code.gs`](script/Code.gs) file from this project, **copy everything**, and paste into the editor.
-4. Change the password on this line:
-   ```javascript
-   const AUTH_KEY = "your-secret-password-here";
-   ```
-5. Click **Deploy** → **New deployment**.
-6. Choose **Web app** as the type.
-7. Set:
-   - **Execute as:** Me
-   - **Who has access:** Anyone
-8. Click **Deploy**.
-9. **Copy the Deployment ID** (long random string).
+### 2 - Run build.bat
+
+Double-click `build.bat` or run:
+
+```powershell
+.\build.bat
+```
+
+This will build the `mhr-cfw-go.exe` file.
 
 ### 3 - Configure
 
-Edit `config.json`:
+Edit `config.json` with your settings:
 
 ```json
 {
@@ -68,6 +62,8 @@ Edit `config.json`:
 
 ### 4 - Run
 
+Double-click `run.bat` or run:
+
 ```powershell
 .\mhr-cfw-go.exe
 ```
@@ -76,7 +72,7 @@ The proxy will start on `127.0.0.1:8080`. Use [FoxyProxy](https://getfoxyproxy.o
 
 ### 5 - Install CA Certificate (for HTTPS interception)
 
-From the menu, select **Install CA certificate** or run:
+Run with:
 
 ```powershell
 .\mhr-cfw-go.exe --install-cert
@@ -102,6 +98,16 @@ From the menu, select **Install CA certificate** or run:
 
 ---
 
+## Set Up Google Apps Script Relay
+
+1. Open [Google Apps Script](https://script.google.com/) and sign in.
+2. Click **New project**.
+3. Copy your relay code into the editor.
+4. Deploy as Web App (Execute as: Me, Who has access: Anyone).
+5. Copy the Deployment ID into `config.json`.
+
+---
+
 ## Features
 
 - HTTP/HTTPS proxy with CONNECT tunnel
@@ -111,6 +117,17 @@ From the menu, select **Install CA certificate** or run:
 - HTTP/2 transport
 - Interactive TUI menu
 - LAN sharing support
+
+---
+
+## Building from Source
+
+Requirements:
+- [Go 1.22+](https://go.dev/dl/)
+
+```bash
+go build -ldflags "-s -w" -o mhr-cfw-go.exe ./cmd/mhr-cfw
+```
 
 ---
 
