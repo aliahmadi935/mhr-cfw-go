@@ -62,30 +62,35 @@ Or download the latest release from [ 📥 GitHub Releases](https://github.com/T
 
 ### 2 - Build
 
+if you from iran, go to project folder and run this codes for download go and depend modules.
+uses runflare repository.
+
+this code for windows
+
+```powershell
+go env -w GOPROXY=https://mirror-go.runflare.com,direct
+```
+
+```powershell
+go env -w GOSUMDB=off
+```
+
+```powershell
+go mod download
+```
+
+
+this code for linux
+
+```powershell
+GOPROXY=https://mirror-go.runflare.com go mod download
+```
+
 **Windows:** Double-click `build.bat` or run:
 
 ```powershell
 .\build.bat
 ```
-
-error found:
-
-
-========================================
- MHR-CFW Go Builder
-========================================
-
-Building mhr-cfw-go.exe...
-
-go: downloading golang.org/x/net v0.33.0
-go: downloading github.com/andybalholm/brotli v1.1.0
-go: downloading github.com/klauspost/compress v1.17.9
-internal\codec\codec.go:10:2: github.com/andybalholm/brotli@v1.1.0: Get "https://proxy.golang.org/github.com/andybalholm/brotli/@v/v1.1.0.zip": dial tcp 142.250.154.141:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
-internal\codec\codec.go:11:2: github.com/klauspost/compress@v1.17.9: Get "https://proxy.golang.org/github.com/klauspost/compress/@v/v1.17.9.zip": dial tcp 142.250.154.141:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
-internal\h2\h2_transport.go:17:2: golang.org/x/net@v0.33.0: Get "https://proxy.golang.org/golang.org/x/net/@v/v0.33.0.zip": dial tcp 142.250.154.141:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
-
-Build FAILED
-Press any key to continue . . .
 
 
 **Linux/Mac:** Make the script executable and run:
